@@ -4,7 +4,7 @@
     $crud = new Crud();
     $datos = $crud->mostrarDatos();
 ?>
-borre esto
+
 <?php include "./header.php";?>
 <div class="container">
     <div class="row">
