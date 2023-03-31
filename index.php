@@ -42,14 +42,15 @@
                                     <td> <?php echo $item->Elemento_a_Registrar?> </td>
                                     <td> <?php echo $item->Codigo_de_Barras?> </td>
                                     <td class="text-center">
-                                        <form action="" method="post">
+                                        <form action="./actualizar.php" method="POST">
+                                            <input type="text" hidden value="<?php echo $item->_id?>" name="id">
                                             <button class="btn btn-warning">
                                             <i class="fa-solid fa-user-pen"></i>
                                             </button>
                                         </form>
                                     </td>
                                     <td class="text-center">
-                                        <form action="./eliminar.php" method="post">
+                                        <form action="./eliminar.php" method="POST">
                                             <input type="text" hidden value="<?php echo $item->_id?>" name="id">
                                             <button class="btn btn-danger">
                                             <i class="fa-solid fa-user-xmark"></i>

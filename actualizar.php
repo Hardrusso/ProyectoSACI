@@ -1,4 +1,16 @@
-<?php include "./header.php";?>
+<?php 
+    
+    include "./clases/Conexion.php";
+    include "./clases/Crud.php";
+    include "./header.php";
+
+    $crud = new Crud();
+    $id = $_POST['id'];
+    $datos = $crud->obtenerDocumento($id);
+	$idMongo = $datos->_id;
+
+?>
+
 
 <div class="container">
     <div class="row">
@@ -18,15 +30,16 @@
 </div>
 
 
-<form id="form1" action="registro.php" method="post">
-<label for="nombre">Nombres:</label>
-		<input type="text" name="nombre" id="nombre" required><br>
+<form id="form1" action="./procesos/actualizar.php" method="POST">
+		<input type="text" hidden value="<?php echo $idMongo?>" name="id">	
+		<label for="nombre">Nombres:</label>
+		<input type="text" name="nombre" id="nombre" value="<?php echo $datos->nombre?>"><br>
 
 		<label for="apellido">Apellidos:</label>
-		<input type="text" name="apellido" id="apellido" required><br>
+		<input type="text" name="apellido" id="apellido" value="<?php echo datos->Apellidos?>"><br>
 
 		<label for="tipo_documento">Tipo de Documento:</label>
-		<select name="tipo_documento" id="tipo_documento" required>
+		<select name="tipo_documento" id="tipo_documento" value="<?php echo datos->Tipo_de_Documento?>">
 			<option value="">Selecciona una opción</option>
 			<option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
 			<option value="Tajeta de Identidad">Tajeta de Identidad</option>
@@ -36,10 +49,10 @@
 		</select><br>
 
 		<label for="documento">Documento:</label>
-		<input type="text" name="documento" id="documento" required><br>
+		<input type="text" name="documento" id="documento" value="<?php echo datos->Documento?><br>
 
 		<label for="tipo_persona">Tipo de persona:</label>
-		<select name="tipo_persona" id="tipo_persona">
+		<select name="tipo_persona" id="tipo_persona" value="<?php echo datos->Tipo_de_Persona?>">
 			<option value="">Selecciona una opción</option>
 			<option value="Instructor">Instructor</option>
 			<option value="Aprendiz">Aprendiz</option>
@@ -48,7 +61,7 @@
 		</select><br>
 
 		<label for="jornada">Jornada:</label>
-		<select name="jornada" id="jornada">
+		<select name="jornada" id="jornada" value="<?php echo datos->Jornada?>">
 			<option value="">Selecciona una opción</option>
 			<option value="Mañana">Mañana</option>
 			<option value="Tarde">Tarde</option>
@@ -57,13 +70,13 @@
 		</select><br>
 
 		<label for="ficha">Ficha:</label>
-		<input type="text" name="ficha" id="ficha" required><br>
+		<input type="text" name="ficha" id="ficha" value="<?php echo datos->Ficha?>"><br>
 		
 		<label for="titulada">Nombre del Programa:</label>
-		<input type="text" name="titulada" id="titulada" required><br>
+		<input type="text" name="titulada" id="titulada" value="<?php echo datos->Nombre_del_Programa?>"><br>
 
 		<label for="tipo_elemento">Elemento a Registrar:</label>
-		<select name="tipo_elemento" id="tipo_elemento" required>
+		<select name="tipo_elemento" id="tipo_elemento" value="<?php echo datos->Elemento_a_Registrar?>">
 			<option value="">Selecciona una opción</option>
 			<option value="Moto">Moto</option>
 			<option value="Vehículo">Vehículo</option>
@@ -74,13 +87,13 @@
 		</select><br>
 
 		<label for="serial">Placa - Serial del Elemento a Registrar:</label>
-		<input type="text" name="serial" id="serial" required><br>
+		<input type="text" name="serial" id="serial" value="<?php echo datos->Placa_o_Serial?>"><br>
 
 		<label for="otros">Características Elemento a Registrar:</label>
-		<input type="text" name="otros" id="otros" required><br>
+		<input type="text" name="otros" id="otros" value="<?php echo datos->Caracteristicas_del_Elemento?>"><br>
 
 		<label for="codigo_barras">Codigo de Barras:</label>
-		<input type="text" name="codigo_barras" id="codigo_barras" required><br>
+		<input type="text" name="codigo_barras" id="codigo_barras" value="<?php echo datos->Codigo_de_Barras?>"><br>
 		   
 	<button class="btn btn-primary mt-3">
 		<i class="fa-solid fa-floppy-disk"></i> Agregar Nuevo Registro
