@@ -1,0 +1,28 @@
+use crud;
+
+db.personas.insertOne({
+  "Nombres" : "Jonathan",
+  "Apellidos" : "Caro Espinosa",
+  "Tipo_de_Documento" : "Cédula de Ciudadanía",
+  "Documento" : "80853204",
+  "Tipo_de_Persona": "Aprendiz",
+  "Jornada": "Mañana",
+  "Ficha" : "2557736",
+  "Nombre_del_Programa": "ADSO",
+  "Elemento_a_Registrar": "Computador Portátil",
+  "Placa_o_Serial" : "123456789",
+  "Caracteristicas_del_Elemento" : "Color Gris Lenovo",
+  "Codigo_de_Barras" : "4564654"
+});
+
+
+db.createUser({
+  user: "mongoadmin",
+  pwd: "123456",
+  roles: [
+    { role: "readWrite", db: "crud"}
+  ]
+});
+ 
+mongosh -u  mongoadmin -p 123456 --authenticationDatabase crud
+
